@@ -93,8 +93,6 @@ scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_d4cd3")
 animation = &"walk"
 autoplay = "walk"
-frame = 3
-frame_progress = 0.782084
 
 [node name="FloorDetection" type="RayCast2D" parent="." index="2"]
 position = Vector2(-15, 0)
