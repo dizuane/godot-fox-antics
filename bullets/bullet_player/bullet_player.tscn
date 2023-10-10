@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqqtj55bahybx"]
+
+[ext_resource type="PackedScene" uid="uid://cxk4p7wj5b1kn" path="res://bullets/bullet_base/bullet_base.tscn" id="1_qvebp"]
+
+[node name="BulletPlayer" instance=ExtResource("1_qvebp")]
