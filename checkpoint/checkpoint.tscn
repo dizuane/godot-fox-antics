@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://5ykuoo7v45fi"]
+[gd_scene load_steps=16 format=3 uid="uid://5ykuoo7v45fi"]
 
+[ext_resource type="Script" path="res://checkpoint/checkpoint.gd" id="1_7ogyo"]
 [ext_resource type="Texture2D" uid="uid://dyh7nd0p3057f" path="res://assets/items/checkpoint.png" id="1_eruq1"]
 
 [sub_resource type="Animation" id="Animation_8mjwo"]
@@ -157,6 +158,8 @@ size = Vector2(9, 47)
 [node name="Checkpoint" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
+monitoring = false
+script = ExtResource("1_7ogyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(13, -32)
@@ -180,3 +183,7 @@ parameters/conditions/on_trigger = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, -24)
 shape = SubResource("RectangleShape2D_pgtuc")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
