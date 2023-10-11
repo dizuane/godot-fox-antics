@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp8ttxq6v828h"]
+[gd_scene load_steps=26 format=3 uid="uid://bp8ttxq6v828h"]
 
 [ext_resource type="Texture2D" uid="uid://vqgtue4wcjej" path="res://assets/enemies/boss/boss.png" id="1_bjxfc"]
+[ext_resource type="Script" path="res://boss/boss.gd" id="1_kfwy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1sac"]
 size = Vector2(20, 58)
@@ -122,6 +123,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.796078, 0, 0.780392, 1), Color(1, 1, 1, 1), Color(0.796078, 0, 0.780392, 1), Color(1, 1, 1, 1), Color(0.796078, 0, 0.780392, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_invincible"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_h2btg"]
 resource_name = "initial_position"
@@ -235,23 +250,23 @@ states/initial_position/position = Vector2(97, 100)
 states/pulse/node = SubResource("AnimationNodeAnimation_7aa5e")
 states/pulse/position = Vector2(559, 36)
 transitions = ["Start", "initial_position", SubResource("AnimationNodeStateMachineTransition_8r1mt"), "initial_position", "arrive", SubResource("AnimationNodeStateMachineTransition_7mk5g"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_kjfl6"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_06dcp"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_0c1nt"), "pulse", "hit", SubResource("AnimationNodeStateMachineTransition_8b6ua"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_3xajq"), "hit", "pulse", SubResource("AnimationNodeStateMachineTransition_nid3a")]
-graph_offset = Vector2(-232, -57)
+graph_offset = Vector2(-229, 3)
 
 [node name="Boss" type="Node2D"]
+script = ExtResource("1_kfwy3")
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -35)
-scale = Vector2(0.00999999, 0.00999999)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_bjxfc")
 
-[node name="Area2D" type="Area2D" parent="Visual"]
+[node name="HitBox" type="Area2D" parent="Visual"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/HitBox"]
 position = Vector2(-2, -37)
 shape = SubResource("RectangleShape2D_u1sac")
 
@@ -276,3 +291,6 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/conditions/on_hit = false
 parameters/conditions/on_trigger = false
+
+[connection signal="area_entered" from="Visual/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
