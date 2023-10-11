@@ -44,7 +44,6 @@ func update_debug_label() -> void:
 
 
 func shoot() -> void:
-	print("flip_h: ", sprite_2d.flip_h)
 	if sprite_2d.flip_h:
 		shooter.shoot(Vector2.LEFT)
 	else:
