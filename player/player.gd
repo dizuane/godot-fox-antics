@@ -3,6 +3,7 @@ class_name Player
 
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player = $AnimationPlayer
+@onready var shooter = $Shooter
 
 const GRAVITY: float = 1000.0
 const RUN_SPEED: float = 120.0
@@ -20,6 +21,7 @@ var _state: PLAYER_STATE = PLAYER_STATE.IDLE
 func _ready():
 	pass
 
+
 func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -28,13 +30,27 @@ func _physics_process(delta):
 	move_and_slide()
 	calculate_states()
 	update_debug_label()
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
+	
 func update_debug_label() -> void:
 	debug_label.text = "floor: %s\n%s\nvelocity x: %.0f\nvelocity y: %.0f" % [
 		is_on_floor(),
 		PLAYER_STATE.keys()[_state],
 		velocity.x, velocity.y
 	]
+
+
+func shoot() -> void:
+	print("flip_h: ", sprite_2d.flip_h)
+	if sprite_2d.flip_h:
+		shooter.shoot(Vector2.LEFT)
+	else:
+		shooter.shoot(Vector2.RIGHT)
+
+
 func get_input() -> void:
 	velocity.x = 0
 	
@@ -51,6 +67,7 @@ func get_input() -> void:
 	
 	velocity.y = clampf(velocity.y, JUMP_VELOCITY, MAX_FALL)
 
+
 func calculate_states() -> void:
 	if _state == PLAYER_STATE.HURT:
 		return
@@ -64,6 +81,7 @@ func calculate_states() -> void:
 			set_state(PLAYER_STATE.FALL)
 		else:
 			set_state(PLAYER_STATE.JUMP)
+
 
 func set_state(new_state: PLAYER_STATE) -> void:
 	if new_state == _state:
