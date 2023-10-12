@@ -5,7 +5,8 @@ extends Node2D
 
 
 func _ready():
-	Engine.time_scale = 1
+	# Engine.time_scale = 1
+	get_tree().paused = false
 
 
 func _process(delta):

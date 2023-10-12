@@ -584,6 +584,7 @@ position = Vector2(1, -32)
 [node name="Paths" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("21_gdqwi")
 autoplay = true
 

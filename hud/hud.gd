@@ -29,7 +29,8 @@ func _process(delta):
 
 
 func show_hud() -> void:
-	Engine.time_scale = 0
+	# Engine.time_scale = 0
+	get_tree().paused = true
 	color_rect.visible = true
 
 
