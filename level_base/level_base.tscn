@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bfft0gvwu2sut"]
+[gd_scene load_steps=26 format=3 uid="uid://bfft0gvwu2sut"]
 
 [ext_resource type="Script" path="res://level_base/level_base.gd" id="1_i2i38"]
 [ext_resource type="Texture2D" uid="uid://ce0bqav8yix4q" path="res://assets/tiles/Terrain (16x16).png" id="1_sg3iq"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://qobm0nclmq8r" path="res://assets/backgrounds/game_background_1/layers/clouds_3.png" id="16_ebgfl"]
 [ext_resource type="Texture2D" uid="uid://s4ix7dxdf7sq" path="res://assets/backgrounds/game_background_1/layers/clouds_4.png" id="17_ug3uf"]
 [ext_resource type="AudioStream" uid="uid://dqw7pvphkbkrm" path="res://assets/sound/Flowing Rocks.ogg" id="21_gdqwi"]
+[ext_resource type="PackedScene" uid="uid://cp4oer32eo5k0" path="res://hud/hud.tscn" id="22_ujcyx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ledg1"]
 texture = ExtResource("1_sg3iq")
@@ -706,3 +707,7 @@ position = Vector2(97, -16)
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_gdqwi")
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("22_ujcyx")]
