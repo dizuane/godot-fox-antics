@@ -51,7 +51,7 @@ label_settings = SubResource("LabelSettings_4jcus")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighScore" type="Label" parent="VB"]
+[node name="LabelHighScore" type="Label" parent="VB"]
 layout_mode = 2
 text = "Highscore: 0000"
 label_settings = SubResource("LabelSettings_8jtub")

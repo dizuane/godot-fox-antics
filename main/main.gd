@@ -1,8 +1,10 @@
 extends CanvasLayer
 
+@onready var label_high_score = $VB/LabelHighScore
+
 
 func _ready():
-	Engine.time_scale = 1
+	label_high_score.text = "Highscore " + str(ScoreManager.get_highscore())
 
 
 func _process(delta):
