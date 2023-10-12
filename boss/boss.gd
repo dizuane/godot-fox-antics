@@ -6,7 +6,7 @@ const HIT_CONDITION: String = "parameters/conditions/on_hit"
 @onready var animation_tree = $AnimationTree
 @onready var visual = $Visual
 
-@export var lives: int = 5
+@export var lives: int = 3
 @export var points: int = 5
 
 var _invincible: bool = false

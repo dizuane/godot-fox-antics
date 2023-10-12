@@ -595,4 +595,4 @@ autoplay = true
 position = Vector2(571, -11)
 
 [node name="Checkpoint" parent="." instance=ExtResource("9_6l47i")]
-position = Vector2(728, -15)
+position = Vector2(587, -15)
