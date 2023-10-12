@@ -19,7 +19,7 @@ func _ready():
 	score_label.text = str(ScoreManager.get_score()).lpad(5, "0")
 
 
-func _process(delta):
+func _process(_delta):
 	if vb_level_complete.visible:
 		if Input.is_action_just_pressed("jump"):
 			GameManager.load_next_level_scene()

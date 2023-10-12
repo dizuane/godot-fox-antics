@@ -53,7 +53,7 @@ func save_highscore() -> void:
 	file.store_string(JSON.stringify(data))
 
 
-func on_enemy_hit(p: int) -> void:
+func on_enemy_hit(p: int, _v: Vector2) -> void:
 	update_score(p)
 
 

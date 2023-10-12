@@ -9,7 +9,7 @@ func _ready():
 	get_tree().paused = false
 
 
-func _process(delta):
+func _process(_delta):
 	player_cam.position = player.position
 	
 	# if Input.is_action_just_pressed("left"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca2daxxi6b623"]
+[gd_scene load_steps=11 format=3 uid="uid://ca2daxxi6b623"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_euffe"]
 [ext_resource type="Texture2D" uid="uid://vfxileddbnxg" path="res://assets/backgrounds/platformer_background_4.png" id="1_rdkax"]
@@ -18,6 +18,46 @@ font_size = 32
 font_color = Color(0.631373, 0.854902, 0.996078, 1)
 outline_size = 8
 outline_color = Color(0, 0.152941, 0.0784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uw5r7"]
+font = ExtResource("2_a5bsh")
+font_size = 24
+font_color = Color(1, 1, 1, 0)
+outline_size = 6
+outline_color = Color(0, 0.152941, 0.0784314, 0)
+shadow_size = 5
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uia21"]
+font = ExtResource("2_a5bsh")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0.152941, 0.0784314, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.494118)
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="Animation" id="Animation_kww1a"]
+resource_name = "blink"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("LabelSettings_uw5r7"), SubResource("LabelSettings_uia21")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_if0sw"]
+_data = {
+"blink": SubResource("Animation_kww1a")
+}
 
 [node name="Main" type="CanvasLayer"]
 script = ExtResource("1_euffe")
@@ -57,6 +97,22 @@ text = "Highscore: 0000"
 label_settings = SubResource("LabelSettings_8jtub")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VB"]
+layout_mode = 2
+text = "Press space to begin"
+label_settings = SubResource("LabelSettings_uw5r7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VB/Label"]
+autoplay = "blink"
+libraries = {
+"": SubResource("AnimationLibrary_if0sw")
+}
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ob5fm")

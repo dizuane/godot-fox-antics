@@ -11,7 +11,7 @@ func _ready():
 	SignalManager.on_game_over.connect(on_game_over)
 
 
-func _process(delta):
+func _process(_delta):
 	offset = get_random_offset()
 
 

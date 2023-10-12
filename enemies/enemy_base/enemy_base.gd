@@ -18,7 +18,7 @@ func _ready():
 	_player_ref = get_tree().get_nodes_in_group(GameManager.GROUP_PLAYER)[0]
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	fallen_off()
 
 
@@ -54,5 +54,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	pass # Replace with function body.
 
 
-func _on_hit_box_area_entered(area):
+func _on_hit_box_area_entered(_area):
 	die()

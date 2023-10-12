@@ -5,19 +5,19 @@ const HIT_CONDITION: String = "parameters/conditions/on_hit"
 
 @onready var animation_tree = $AnimationTree
 @onready var visual = $Visual
+@onready var hit_box = $Visual/HitBox
 
 @export var lives: int = 3
 @export var points: int = 5
 
 var _invincible: bool = false
-
+var _has_triggered: bool = false
 
 func _ready():
 	pass # Replace with function body.
 
 
-
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -43,15 +43,21 @@ func take_damage() -> void:
 	if _invincible:
 		return
 	
+	if !_has_triggered:
+		return
+
 	set_invincible(true)
 	tween_hit()
 	reduce_lives()
 
 
-func _on_trigger_area_entered(area):
+func _on_trigger_area_entered(_area):
 	if !animation_tree[TRIGGER_CONDITION]:
 		animation_tree[TRIGGER_CONDITION] = true
+		_has_triggered = true
+		# Bits!!
+		hit_box.collision_layer = 4 # The TOTAL bit value, NOT the layer #!
 
 
-func _on_hit_box_area_entered(area):
+func _on_hit_box_area_entered(_area):
 	take_damage()
