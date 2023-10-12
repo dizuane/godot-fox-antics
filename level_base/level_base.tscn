@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfft0gvwu2sut"]
+[gd_scene load_steps=15 format=3 uid="uid://bfft0gvwu2sut"]
 
 [ext_resource type="Script" path="res://level_base/level_base.gd" id="1_i2i38"]
 [ext_resource type="Texture2D" uid="uid://ce0bqav8yix4q" path="res://assets/tiles/Terrain (16x16).png" id="1_sg3iq"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bp8ttxq6v828h" path="res://boss/boss.tscn" id="8_wyucf"]
 [ext_resource type="PackedScene" uid="uid://5ykuoo7v45fi" path="res://checkpoint/checkpoint.tscn" id="9_6l47i"]
 [ext_resource type="PackedScene" uid="uid://dub7x2203gana" path="res://moving_platform/moving_platform.tscn" id="10_vpjsk"]
+[ext_resource type="PackedScene" uid="uid://cvp1cfab8qmcv" path="res://ball_spikes/ball_spikes.tscn" id="11_ls4ve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ledg1"]
 texture = ExtResource("1_sg3iq")
@@ -558,6 +559,12 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ledg1")
 
+[sub_resource type="Curve2D" id="Curve2D_82rfe"]
+_data = {
+"points": PackedVector2Array(46.7218, -2.35969, -46.7218, 2.35969, 783, -38, -13.2142, 18.8775, 13.2142, -18.8775, 783, -220, -15.102, -34.4514, 15.102, 34.4514, 911, -219, 0, 0, 0, 0, 783, -38)
+}
+point_count = 4
+
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_i2i38")
 
@@ -571,7 +578,7 @@ position = Vector2(258, -150)
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_ltp7w")]
-position = Vector2(112, -82)
+position = Vector2(663, -66)
 
 [node name="Snail" parent="." instance=ExtResource("5_32cm4")]
 position = Vector2(0, -24)
@@ -600,3 +607,13 @@ position = Vector2(50, -40)
 
 [node name="MP1_2" type="Marker2D" parent="Markers"]
 position = Vector2(50, -140)
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="Spikes1" type="Path2D" parent="Paths"]
+position = Vector2(-7, 2)
+curve = SubResource("Curve2D_82rfe")
+
+[node name="BallSpikes" parent="Paths/Spikes1" instance=ExtResource("11_ls4ve")]
+position = Vector2(783, -38)
+rotation = 3.09113
