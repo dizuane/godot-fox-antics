@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gwkrvu8i1gmv"]
+
+[ext_resource type="PackedScene" uid="uid://bfft0gvwu2sut" path="res://level_base/level_base.tscn" id="1_unjlm"]
+[ext_resource type="PackedScene" uid="uid://b8yytt36b0r6l" path="res://enemies/frog/frog.tscn" id="2_ohmio"]
+
+[node name="Level2" instance=ExtResource("1_unjlm")]
+
+[node name="Frog" parent="." index="10" instance=ExtResource("2_ohmio")]
+position = Vector2(256, -88)
+
+[node name="Frog2" parent="." index="11" instance=ExtResource("2_ohmio")]
+position = Vector2(369, -88)
+
+[node name="Frog3" parent="." index="12" instance=ExtResource("2_ohmio")]
+position = Vector2(313, -120)

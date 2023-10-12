@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca2daxxi6b623"]
+[gd_scene load_steps=7 format=3 uid="uid://ca2daxxi6b623"]
 
+[ext_resource type="Script" path="res://main/main.gd" id="1_euffe"]
 [ext_resource type="Texture2D" uid="uid://vfxileddbnxg" path="res://assets/backgrounds/platformer_background_4.png" id="1_rdkax"]
 [ext_resource type="FontFile" uid="uid://ci61mtdt7bcet" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_a5bsh"]
 [ext_resource type="AudioStream" uid="uid://d1mly2reptu81" path="res://assets/sound/Farm Frolics.ogg" id="3_ob5fm"]
@@ -19,6 +20,7 @@ outline_size = 8
 outline_color = Color(0, 0.152941, 0.0784314, 1)
 
 [node name="Main" type="CanvasLayer"]
+script = ExtResource("1_euffe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
