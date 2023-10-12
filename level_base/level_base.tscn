@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfft0gvwu2sut"]
+[gd_scene load_steps=16 format=3 uid="uid://bfft0gvwu2sut"]
 
 [ext_resource type="Script" path="res://level_base/level_base.gd" id="1_i2i38"]
 [ext_resource type="Texture2D" uid="uid://ce0bqav8yix4q" path="res://assets/tiles/Terrain (16x16).png" id="1_sg3iq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://5ykuoo7v45fi" path="res://checkpoint/checkpoint.tscn" id="9_6l47i"]
 [ext_resource type="PackedScene" uid="uid://dub7x2203gana" path="res://moving_platform/moving_platform.tscn" id="10_vpjsk"]
 [ext_resource type="PackedScene" uid="uid://cvp1cfab8qmcv" path="res://ball_spikes/ball_spikes.tscn" id="11_ls4ve"]
+[ext_resource type="PackedScene" uid="uid://c008erdiohqwv" path="res://floor_spikes/floor_spikes.tscn" id="12_gmkxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ledg1"]
 texture = ExtResource("1_sg3iq")
@@ -578,7 +579,7 @@ position = Vector2(258, -150)
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_ltp7w")]
-position = Vector2(663, -66)
+position = Vector2(137, -31)
 
 [node name="Snail" parent="." instance=ExtResource("5_32cm4")]
 position = Vector2(0, -24)
@@ -617,3 +618,6 @@ curve = SubResource("Curve2D_82rfe")
 [node name="BallSpikes" parent="Paths/Spikes1" instance=ExtResource("11_ls4ve")]
 position = Vector2(783, -38)
 rotation = 3.09113
+
+[node name="FloorSpikes" parent="." instance=ExtResource("12_gmkxs")]
+position = Vector2(97, -16)
